@@ -19,6 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://site.reveyro.co.za"),
   title: "Reveyro — Every transaction. Seen before it happens.",
   description:
     "Reveyro gives your team one control surface for customers, invoices, and permissions — watching everything that moves through your business, in real time.",

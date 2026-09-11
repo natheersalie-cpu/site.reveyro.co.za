@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "reveyro-site",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "account_id": "95c9f6a176cfebec410e7981a8c6fbe3",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "site.reveyro.co.za/*",
+      "zone_name": "reveyro.co.za"
+    }
+  ],
+  "vars": {
+    "PUBLIC_BASE_URL": "https://site.reveyro.co.za",
+    "DEMO_REQUEST_NOTIFY_EMAIL": "natheers@reveyro.co.za",
+    "CONTACT_NOTIFY_EMAIL": "hello@reveyro.co.za"
+  }
+}
