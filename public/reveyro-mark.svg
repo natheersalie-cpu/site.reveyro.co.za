@@ -1,0 +1,36 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Reveyro mark</title>
+  <desc id="desc">A stylised Reveyro R mark in white, blue and cyan on a navy rounded square.</desc>
+  <defs>
+    <linearGradient id="panel" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#143D83"/>
+      <stop offset="0.45" stop-color="#07172E"/>
+      <stop offset="1" stop-color="#02040B"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="158" y1="354" x2="354" y2="162" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A55FF"/>
+      <stop offset="0.48" stop-color="#15D5F0"/>
+      <stop offset="1" stop-color="#0645D8"/>
+    </linearGradient>
+    <linearGradient id="leg" x1="285" y1="301" x2="420" y2="424" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0732B8"/>
+      <stop offset="1" stop-color="#21D8E5"/>
+    </linearGradient>
+    <linearGradient id="white" x1="127" y1="126" x2="391" y2="199" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAF5FF"/>
+    </linearGradient>
+    <filter id="glow" x="70" y="78" width="374" height="372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#00D4FF" flood-opacity="0.22"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#FFFFFF" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect x="28" y="28" width="456" height="456" rx="92" fill="url(#panel)"/>
+  <path d="M74 84C45 113 29 154 29 212V120C29 70 70 29 120 29H218C155 29 109 48 74 84Z" fill="white" opacity="0.11"/>
+  <g filter="url(#glow)">
+    <path d="M135 128H345C405 128 436 164 436 213C436 267 397 308 340 308H251C216 308 189 331 184 366L174 436H105L120 333C131 261 181 222 249 222H340C359 222 370 211 370 196C370 183 361 174 344 174H178L135 128Z" fill="url(#blue)"/>
+    <path d="M135 128H344C405 128 436 164 436 213C436 246 421 275 396 292C408 267 396 222 340 222H249C218 222 189 230 166 246L135 128Z" fill="url(#white)"/>
+    <path d="M267 308H346L430 436H349L267 308Z" fill="url(#leg)"/>
+    <path d="M267 308H346L377 356L315 329L267 308Z" fill="#021022" opacity="0.42"/>
+  </g>
+</svg>

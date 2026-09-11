@@ -23,7 +23,11 @@ export const metadata: Metadata = {
   description:
     "Reveyro gives your team one control surface for customers, invoices, and permissions — watching everything that moves through your business, in real time.",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/reveyro-mark.svg", type: "image/svg+xml", sizes: "512x512" },
+    ],
+    apple: "/reveyro-mark.svg",
   },
   openGraph: {
     title: "Reveyro — Every transaction. Seen before it happens.",
@@ -31,6 +35,14 @@ export const metadata: Metadata = {
       "Reveyro gives your team one control surface for customers, invoices, and permissions — watching everything that moves through your business, in real time.",
     url: "https://site.reveyro.co.za",
     siteName: "Reveyro",
+    images: [
+      {
+        url: "/reveyro-mark.svg",
+        width: 512,
+        height: 512,
+        alt: "Reveyro",
+      },
+    ],
     locale: "en_ZA",
     type: "website",
   },

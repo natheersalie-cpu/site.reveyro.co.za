@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
@@ -20,7 +21,13 @@ export function Footer() {
             {/* Brand + copyright */}
             <div className="flex flex-col items-center gap-2 md:items-start">
               <div className="flex items-center gap-2 text-sm font-medium">
-                <span className="block h-[26px] w-[26px] rounded-[7px] bg-gradient-to-br from-teal to-indigo" />
+                <Image
+                  src="/reveyro-mark.svg"
+                  alt="Reveyro"
+                  width={30}
+                  height={30}
+                  className="h-[30px] w-[30px] rounded-[8px]"
+                />
                 Reveyro
               </div>
               <p className="text-xs text-text-faint">

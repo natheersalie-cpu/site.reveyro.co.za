@@ -56,7 +56,7 @@ export function DemoModal() {
           key={modalKey}
           ref={panelRef}
           className={cn(
-            "relative w-full max-w-md rounded-2xl border border-white/10 bg-bg p-8 shadow-xl",
+            "relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/10 bg-bg p-8 shadow-xl",
             "animate-in fade-in-0 zoom-in-95 duration-300"
           )}
         >

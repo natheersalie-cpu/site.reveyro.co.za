@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useModal } from "@/components/ModalContext";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -17,13 +19,21 @@ const navLinks = [
  */
 export function NavBar() {
   const pathname = usePathname();
+  const { open } = useModal();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[42px] py-[22px]">
       {/* Brand */}
       <Link href="/" className="flex items-center gap-2 text-sm font-medium">
-        <span className="block h-[26px] w-[26px] rounded-[7px] bg-gradient-to-br from-teal to-indigo" />
-        Reveyro
+        <Image
+          src="/reveyro-mark.svg"
+          alt="Reveyro"
+          width={32}
+          height={32}
+          priority
+          className="h-8 w-8 rounded-[8px]"
+        />
+        <span>Reveyro</span>
       </Link>
 
       {/* Links + CTA */}
@@ -42,12 +52,13 @@ export function NavBar() {
             {link.label}
           </Link>
         ))}
-        <Link
-          href="/contact"
+        <button
+          type="button"
+          onClick={open}
           className="rounded-lg border border-white/18 bg-transparent px-4 py-2 text-xs text-white transition-colors hover:bg-white/5"
         >
           Request access
-        </Link>
+        </button>
       </div>
     </nav>
   );

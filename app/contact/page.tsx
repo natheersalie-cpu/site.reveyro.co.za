@@ -7,10 +7,8 @@ export const metadata = {
   description: "Get in touch with the Reveyro team.",
 };
 
-/* PLACEHOLDER_ADDRESS — replace with real address */
-const PLACEHOLDER_ADDRESS = "123 Adderley Street\nCape Town, South Africa";
-/* PLACEHOLDER_PHONE — replace with real phone number */
-const PLACEHOLDER_PHONE = "+27 21 000 0000";
+const PUBLIC_EMAIL = "hello@reveyro.co.za";
+const WHATSAPP_URL = "https://wa.me/27832854686";
 
 export default function ContactPage() {
   return (
@@ -28,27 +26,31 @@ export default function ContactPage() {
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
           {/* Contact info */}
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xs font-mono uppercase tracking-widest text-indigo">
-                Address
-              </h3>
-              <p className="mt-2 text-sm whitespace-pre-line text-text-dim">
-                {PLACEHOLDER_ADDRESS}
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xs font-mono uppercase tracking-widest text-indigo">
-                Phone
-              </h3>
-              <p className="mt-2 text-sm text-text-dim">{PLACEHOLDER_PHONE}</p>
-            </div>
-            <div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
               <h3 className="text-xs font-mono uppercase tracking-widest text-indigo">
                 Email
               </h3>
               <p className="mt-2 text-sm text-text-dim">
-                hello@reveyro.co.za
+                <a href={`mailto:${PUBLIC_EMAIL}`} className="transition-colors hover:text-white">
+                  {PUBLIC_EMAIL}
+                </a>
               </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="text-xs font-mono uppercase tracking-widest text-indigo">
+                WhatsApp
+              </h3>
+              <p className="mt-2 text-sm text-text-dim">
+                Prefer a quick chat? Message Reveyro directly on WhatsApp.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost mt-4 inline-flex items-center justify-center"
+              >
+                Open WhatsApp
+              </a>
             </div>
           </div>
 
