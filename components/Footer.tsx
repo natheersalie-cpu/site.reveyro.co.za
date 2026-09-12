@@ -11,11 +11,12 @@ const footerLinks = [
 
 /**
  * Site footer — nav links, copyright, and the WhatsAppFloat button.
+ * The top edge carries a subtle teal/indigo glow divider.
  */
 export function Footer() {
   return (
     <>
-      <footer className="mt-auto border-t border-white/5 pt-12 pb-6">
+      <footer className="footer-glow mt-auto pt-12 pb-6">
         <div className="mx-auto max-w-[1080px] px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             {/* Brand + copyright */}
@@ -31,7 +32,7 @@ export function Footer() {
                 Reveyro
               </div>
               <p className="text-xs text-text-faint">
-                © {new Date().getFullYear()} Reveyro. All rights reserved.
+                {"\u00A9"} {new Date().getFullYear()} Reveyro. All rights reserved.
               </p>
             </div>
 

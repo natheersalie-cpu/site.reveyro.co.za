@@ -1,10 +1,8 @@
 "use client";
 
 /**
- * Floating WhatsApp live-chat button.
- *
- * Visible on every page (bottom-right corner). Opens WhatsApp web in a
- * new tab — no SDK required.
+ * Floating WhatsApp live-chat button with a soft radar ping.
+ * Opens WhatsApp web in a new tab — no SDK required.
  */
 export function WhatsAppFloat() {
   return (
@@ -15,7 +13,10 @@ export function WhatsAppFloat() {
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_24px_rgba(37,211,102,0.45)] transition-transform hover:scale-105"
       aria-label="Chat on WhatsApp"
     >
-      <WhatsAppIcon />
+      <span aria-hidden="true" className="radar-ping" />
+      <span className="relative flex">
+        <WhatsAppIcon />
+      </span>
     </a>
   );
 }
@@ -23,8 +24,8 @@ export function WhatsAppFloat() {
 function WhatsAppIcon() {
   return (
     <svg
-      width="30"
-      height="30"
+      width="20"
+      height="20"
       viewBox="0 0 32 32"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

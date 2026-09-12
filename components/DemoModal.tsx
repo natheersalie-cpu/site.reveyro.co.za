@@ -46,7 +46,7 @@ export function DemoModal() {
       <div
         className={cn(
           "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm",
-          "animate-in fade-in-0 duration-200"
+          "modal-backdrop-in"
         )}
       />
 
@@ -57,7 +57,7 @@ export function DemoModal() {
           ref={panelRef}
           className={cn(
             "relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/10 bg-bg p-8 shadow-xl",
-            "animate-in fade-in-0 zoom-in-95 duration-300"
+            "modal-panel-in"
           )}
         >
           <button

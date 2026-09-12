@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { isValidEmail } from "@/lib/utils";
+import { isValidEmail, cn } from "@/lib/utils";
 
 type FieldErrors = {
   name?: string;
@@ -12,7 +12,7 @@ type FieldErrors = {
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 /**
- * Contact form: name, email, message → POST /api/contact
+ * Contact form: name, email, message -> POST /api/contact
  * Client-side validation with inline error messages.
  */
 export function ContactForm() {
@@ -71,7 +71,7 @@ export function ContactForm() {
     return (
       <div className="rounded-2xl border border-white/10 bg-bg/40 p-8 text-center">
         <h3 className="text-xl font-semibold text-fg">
-                    Thanks — we&apos;ll be in touch shortly.
+          Thanks &mdash; we&apos;ll be in touch shortly.
         </h3>
         <p className="mt-2 text-sm text-text-dim">
           We typically respond within one business day.
@@ -153,19 +153,15 @@ export function ContactForm() {
           status === "sending" && "cursor-not-allowed opacity-70"
         )}
       >
-        {status === "sending" ? "Sending…" : "Send message"}
+        {status === "sending" ? "Sending..." : "Send message"}
       </button>
     </form>
   );
 }
 
-/* ── shared input class ── */
+/* == shared input class == */
 function inputClass(error?: string) {
   const base =
-    "mt-2 block w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-fg placeholder-text-dim focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal/30 transition-colors";
+    "mt-2 block w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-fg placeholder-text-dim hover:border-white/25 focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal/30 transition-colors";
   return cn(base, error && "border-red-400 focus:ring-red-400/30");
-}
-
-function cn(...classes: (string | false | null | undefined)[]) {
-  return classes.filter(Boolean).join(" ");
 }
