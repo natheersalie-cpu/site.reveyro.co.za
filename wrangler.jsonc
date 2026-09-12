@@ -6,6 +6,9 @@
   "compatibility_flags": ["nodejs_compat"],
   "account_id": "95c9f6a176cfebec410e7981a8c6fbe3",
   "workers_dev": false,
+  "assets": {
+    "directory": ".open-next/assets"
+  },
   "routes": [
     {
       "pattern": "site.reveyro.co.za/*",

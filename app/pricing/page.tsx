@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
@@ -43,8 +42,6 @@ const tiers = [
 /* PLACEHOLDER_TIER_FEATURES — real list to follow separately */
 
 export default function PricingPage() {
-  const [annual, setAnnual] = useState(false);
-
   return (
     <>
       <NavBar />
@@ -53,55 +50,14 @@ export default function PricingPage() {
         <div className="section-eyebrow">PRICING</div>
         <h2>Everything your business needs, in one place.</h2>
         <p className="lede">
-          Pay-as-you-grow pricing with no hidden fees. Switch between
-          monthly and annual billing at any time.
+          Pay-as-you-grow pricing with no hidden fees. Simple monthly
+          billing.
         </p>
-
-        {/* Billing toggle */}
-        <div className="mt-12 flex items-center justify-center gap-4">
-          <span
-            className={`text-sm ${
-              !annual ? "text-fg" : "text-text-dim"
-            } transition-colors`}
-          >
-            Monthly
-          </span>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={annual}
-            onClick={() => setAnnual(!annual)}
-            className={cn(
-              "relative inline-flex h-6 w-11 items-center rounded-full transition-colors",
-              annual ? "bg-teal" : "bg-white/10"
-            )}
-          >
-            <span
-              className={cn(
-                "absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform",
-                annual ? "translate-x-5" : "translate-x-0"
-              )}
-            />
-          </button>
-          <span
-            className={`text-sm ${
-              annual ? "text-fg" : "text-text-dim"
-            } transition-colors`}
-          >
-            Annual
-          </span>
-        </div>
-
-        {annual && (
-          <p className="mt-3 text-center text-xs text-text-dim">
-            Save ~17% — pay for 10 months, get 12 months of service.
-          </p>
-        )}
 
         {/* Tier cards */}
         <div className="grid3 mt-12 md:grid-cols-2 xl:grid-cols-4">
           {tiers.map((tier) => (
-            <TierCard key={tier.name} tier={tier} annual={annual} />
+            <TierCard key={tier.name} tier={tier} />
           ))}
         </div>
       </section>
@@ -133,15 +89,13 @@ export default function PricingPage() {
 
 function TierCard({
   tier,
-  annual,
 }: {
   tier: (typeof tiers)[number];
-  annual: boolean;
 }) {
   const isEnterprise = tier.price === null;
   const priceDisplay = isEnterprise
     ? "Custom pricing"
-    : `${tier.price}${annual ? " (billed annually)" : ""} / ${tier.period}`;
+    : `${tier.price} / ${tier.period}`;
 
   return (
     <div
