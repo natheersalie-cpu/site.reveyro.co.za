@@ -54,8 +54,8 @@ Cloudflare. You must be authenticated with Wrangler first
 
 **Vars** (non-secret, committed in `wrangler.jsonc`):
 - `PUBLIC_BASE_URL=https://site.reveyro.co.za`
-- `DEMO_REQUEST_NOTIFY_EMAIL=natheers@reveyro.co.za` (request-access form)
-- `CONTACT_NOTIFY_EMAIL=hello@reveyro.co.za` (contact form)
+- `DEMO_REQUEST_NOTIFY_EMAIL=help@reveyro.co.za` (request-access form)
+- `CONTACT_NOTIFY_EMAIL=help@reveyro.co.za` (contact form)
 
 **Secrets** (never commit — set in the Cloudflare dashboard or via CLI):
 

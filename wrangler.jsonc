@@ -17,7 +17,7 @@
   ],
   "vars": {
     "PUBLIC_BASE_URL": "https://site.reveyro.co.za",
-    "DEMO_REQUEST_NOTIFY_EMAIL": "natheers@reveyro.co.za",
-    "CONTACT_NOTIFY_EMAIL": "hello@reveyro.co.za"
+    "DEMO_REQUEST_NOTIFY_EMAIL": "help@reveyro.co.za",
+    "CONTACT_NOTIFY_EMAIL": "help@reveyro.co.za"
   }
 }

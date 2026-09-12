@@ -7,7 +7,7 @@ export const metadata = {
   description: "Get in touch with the Reveyro team.",
 };
 
-const PUBLIC_EMAIL = "hello@reveyro.co.za";
+const PUBLIC_EMAIL = "help@reveyro.co.za";
 const WHATSAPP_URL = "https://wa.me/27832854686";
 
 export default function ContactPage() {

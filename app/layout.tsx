@@ -3,6 +3,7 @@ import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ModalProvider } from "@/components/ModalContext";
 import { DemoModal } from "@/components/DemoModal";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-ui",
@@ -20,9 +21,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://site.reveyro.co.za"),
-  title: "Reveyro — Every transaction. Seen before it happens.",
+  title: "Reveyro — Customers. Quotes. Invoices. All in one place.",
   description:
-    "Reveyro gives your team one control surface for customers, invoices, and permissions — watching everything that moves through your business, in real time.",
+    "Reveyro gives small businesses simple, professional tools to manage customers, quotes, invoices and payments — without the complexity and cost of enterprise software. Start simple. Grow with Reveyro.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
     apple: "/reveyro-mark.svg",
   },
   openGraph: {
-    title: "Reveyro — Every transaction. Seen before it happens.",
+    title: "Reveyro — Customers. Quotes. Invoices. All in one place.",
     description:
-      "Reveyro gives your team one control surface for customers, invoices, and permissions — watching everything that moves through your business, in real time.",
+      "Reveyro gives small businesses simple, professional tools to manage customers, quotes, invoices and payments — without the complexity and cost of enterprise software. Start simple. Grow with Reveyro.",
     url: "https://site.reveyro.co.za",
     siteName: "Reveyro",
     images: [
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="relative min-h-screen flex flex-col">
+        <ScrollProgress />
         <ModalProvider>
           {children}
           <DemoModal />
