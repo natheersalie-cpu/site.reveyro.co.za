@@ -1,17 +1,23 @@
 "use client";
 
-import { ParticleField } from "@/components/ParticleField";
 import { HeroCTAs } from "@/components/HeroCTAs";
 
 /**
- * Home-page hero: full-viewport ParticleField background with a centered
+ * Home-page hero: full-viewport gradient background with a centered
  * glass-panel headline, subhead, and dual CTAs.
  */
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Canvas particle field — mount-only RAF loop */}
-      <ParticleField />
+      {/* Static gradient background — no canvas, no animation loop */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 38%, rgba(45,212,191,0.14), transparent 70%), radial-gradient(50% 40% at 70% 65%, rgba(129,140,248,0.12), transparent 70%), #02030a",
+        }}
+      />
 
       {/* Centered glass panel */}
       <div className="absolute top-1/2 left-1/2 z-30 mx-auto w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-bg/42 px-[46px] py-[38px] text-center backdrop-blur-xl border border-white/8">
