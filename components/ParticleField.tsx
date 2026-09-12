@@ -5,13 +5,13 @@ import { useEffect, useRef } from "react";
 type Hue = "teal" | "indigo";
 
 /* ============ tunable constants ============ */
-const AMBIENT_COUNT = 550; // total particles — keep high so the wordmark reads clearly
+const AMBIENT_COUNT = 350; // total particles — keep high so the wordmark reads clearly
 const WORDMARK_TEXT = "REVEYRO";
-const DRIFT_MS = 5000; // free-drift phase (ms)
-const EASE_MS = 2200; // ease-in / ease-out duration (ms)
-const HOLD_MS = 7000; // hold-formed position (ms)
+const DRIFT_MS = 3000; // free-drift phase (ms)
+const EASE_MS = 1800; // ease-in / ease-out duration (ms)
+const HOLD_MS = 6000; // hold-formed position (ms)
 const LOOP = true; // repeat the cycle indefinitely
-const FORM_Y_RATIO = 0.3; // wordmark vertical position (ratio of viewport height, above the hero card)
+const FORM_Y_RATIO = 0.22; // wordmark vertical position (ratio of viewport height, above the hero card)
 
 interface Particle {
   x: number;
@@ -76,9 +76,9 @@ export function ParticleField() {
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        vx: lerp(-0.45, 0.45, Math.random()),
-        vy: lerp(-0.45, 0.45, Math.random()),
-        r: lerp(0.7, 1.9, Math.random()),
+        vx: lerp(-1.1, 1.1, Math.random()),
+        vy: lerp(-1.1, 1.1, Math.random()),
+        r: lerp(1.0, 2.4, Math.random()),
         hue: Math.random() < 0.6 ? "teal" : "indigo",
         jphase: Math.random() * Math.PI * 2,
         target: null,
@@ -88,16 +88,16 @@ export function ParticleField() {
 
     /* ============ sample the wordmark into target points ============ */
     function buildTextTargets() {
-      const offW = Math.min(1000, w * 0.85);
-      const offH = 220;
+      const offW = Math.min(1100, w * 0.9);
+      const offH = 240;
       if (offW <= 0) return;
       const off = document.createElement("canvas");
       off.width = Math.floor(offW);
       off.height = offH;
-      const octx = off.getContext("2d");
+      const octx = off.getContext("2d", { willReadFrequently: true });
       if (!octx) return;
 
-      const fontSize = Math.min(150, (offW / WORDMARK_TEXT.length) * 1.55);
+      const fontSize = Math.min(170, (offW / WORDMARK_TEXT.length) * 1.7);
       octx.font = `700 ${fontSize}px "Space Grotesk", sans-serif`;
       octx.textAlign = "center";
       octx.textBaseline = "middle";
@@ -195,10 +195,19 @@ export function ParticleField() {
           const jy = Math.cos(now * 0.0013 + p.jphase) * 1.4;
           const tx = p.target.x + jx;
           const ty = p.target.y + jy;
-          const ax = (tx - p.x) * 0.045 * factor;
-          const ay = (ty - p.y) * 0.045 * factor;
-          p.vx = p.vx * (1 - factor * 0.92) + ax;
-          p.vy = p.vy * (1 - factor * 0.92) + ay;
+          const pull = 0.09 * factor + 0.02 * factor * factor;
+          const ax = (tx - p.x) * pull;
+          const ay = (ty - p.y) * pull;
+          const damp = 1 - factor * 0.75;
+          p.vx = p.vx * damp + ax;
+          p.vy = p.vy * damp + ay;
+          // cap speed so the word snaps in fast without slingshotting past targets
+          const sp = Math.hypot(p.vx, p.vy);
+          const maxSp = 3 + factor * 9;
+          if (sp > maxSp) {
+            p.vx = (p.vx / sp) * maxSp;
+            p.vy = (p.vy / sp) * maxSp;
+          }
         }
         p.x += p.vx;
         p.y += p.vy;
@@ -209,17 +218,17 @@ export function ParticleField() {
 
         g.beginPath();
         g.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        g.fillStyle = particleColor(p, 0.6);
-        g.shadowColor = particleColor(p, 0.9);
-        g.shadowBlur = 4;
+        g.fillStyle = particleColor(p, 0.85);
+        g.shadowColor = particleColor(p, 1);
+        g.shadowBlur = 8;
         g.fill();
       }
       g.shadowBlur = 0;
 
       // connecting threads only make sense while particles are loose — fade them out as text forms
-      const threadAlpha = (1 - factor) * 0.07;
+      const threadAlpha = (1 - factor) * 0.12;
       if (threadAlpha > 0.003) {
-        g.lineWidth = 0.5;
+        g.lineWidth = 0.6;
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j += 8) {
             const a = particles[i];
@@ -251,5 +260,11 @@ export function ParticleField() {
     };
   }, []); /* empty deps → mount only */
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0 h-full w-full"
+      aria-hidden="true"
+    />
+  );
 }
